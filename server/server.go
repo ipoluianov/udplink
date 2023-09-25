@@ -31,7 +31,11 @@ func Server() {
 	}
 
 	addr, _ := net.ResolveUDPAddr("udp", localAddress)
-	conn, _ := net.ListenUDP("udp", addr)
+	conn, err := net.ListenUDP("udp", addr)
+	if err != nil {
+		fmt.Println("ERROR:", err)
+		return
+	}
 
 	for {
 		buffer := make([]byte, 1024)

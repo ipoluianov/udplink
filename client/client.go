@@ -3,7 +3,6 @@ package client
 import (
 	"fmt"
 	"net"
-	"os"
 	"strings"
 	"time"
 )
@@ -13,12 +12,9 @@ func Client() {
 }
 
 func register() {
-	signalAddress := os.Args[2]
-
+	fmt.Println("REGISTERING ...")
+	signalAddress := "demo.gazer.cloud:8585"
 	localAddress := ":8585" // default port
-	if len(os.Args) > 3 {
-		localAddress = os.Args[3]
-	}
 
 	remote, _ := net.ResolveUDPAddr("udp", signalAddress)
 	local, _ := net.ResolveUDPAddr("udp", localAddress)
@@ -45,7 +41,7 @@ func listen(conn *net.UDPConn, local string) {
 			continue
 		}
 
-		fmt.Println("[INCOMING]", string(buffer[0:bytesRead]))
+		fmt.Println("recevied UDP frame: ", string(buffer[0:bytesRead]))
 		if string(buffer[0:bytesRead]) == "Hello!" {
 			continue
 		}

@@ -1,9 +1,6 @@
 package server
 
 import (
-	"fmt"
-	"net"
-	"os"
 	"strings"
 )
 
@@ -22,6 +19,7 @@ func (c clientType) keys(filter string) string {
 	return strings.Join(output, ",")
 }
 
+/*
 func Server() {
 	fmt.Println("SERVER")
 	fmt.Println("------")
@@ -32,10 +30,7 @@ func Server() {
 
 	addr, _ := net.ResolveUDPAddr("udp", localAddress)
 	conn, err := net.ListenUDP("udp", addr)
-	if err != nil {
-		fmt.Println("ERROR:", err)
-		return
-	}
+	if err != nil
 
 	for {
 		buffer := make([]byte, 1024)
@@ -62,3 +57,4 @@ func Server() {
 		}
 	}
 }
+*/

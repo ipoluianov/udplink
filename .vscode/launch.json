@@ -10,8 +10,7 @@
             "request": "launch",
             "mode": "auto",
             "program": "main.go",
-            "output": "udplink.exe",
-            "args": ["c", ":8585"]
+            "output": "udplink.exe"
         }
     ]
 }

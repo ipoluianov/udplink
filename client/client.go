@@ -13,22 +13,19 @@ func Client() {
 
 func register() {
 	fmt.Println("REGISTERING ...")
-	signalAddress := "demo.gazer.cloud:8585"
+	signalAddress := "x03.gazer.cloud:8585"
 	localAddress := ":8585" // default port
 
 	remote, _ := net.ResolveUDPAddr("udp", signalAddress)
 	local, _ := net.ResolveUDPAddr("udp", localAddress)
 	conn, _ := net.ListenUDP("udp", local)
-	go func() {
-		bytesWritten, err := conn.WriteTo([]byte("register"), remote)
-		if err != nil {
-			panic(err)
-		}
+	bytesWritten, err := conn.WriteTo([]byte("HELLO"), remote)
+	if err != nil {
+		fmt.Println("ERROR:", err)
+	}
+	fmt.Println(bytesWritten, " bytes written")
 
-		fmt.Println(bytesWritten, " bytes written")
-	}()
-
-	listen(conn, local.String())
+	//listen(conn, local.String())
 }
 
 func listen(conn *net.UDPConn, local string) {
